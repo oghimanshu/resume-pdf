@@ -18,14 +18,24 @@
 
     <style>
         /* =========================================
-           SCREEN STYLES (The "Crazy" Visuals)
+           SCREEN STYLES – Premium Visual Design
            ========================================= */
         :root {
             --primary: #c9184a;
+            --primary-light: #ff4d6d;
+            --primary-glow: rgba(201, 24, 74, 0.25);
+            --accent: #6d28d9;
+            --accent-light: #a78bfa;
             --text-dark: #1e293b;
+            --text-medium: #475569;
             --text-light: #64748b;
-            --bg-glass: rgba(255, 255, 255, 0.85);
-            --border-glass: rgba(255, 255, 255, 0.5);
+            --bg-glass: rgba(255, 255, 255, 0.88);
+            --bg-glass-hover: rgba(255, 255, 255, 0.95);
+            --border-glass: rgba(255, 255, 255, 0.55);
+            --shadow-card: 0 25px 60px rgba(0, 0, 0, 0.25);
+            --radius-lg: 24px;
+            --radius-md: 14px;
+            --radius-sm: 8px;
         }
 
         * {
@@ -37,11 +47,24 @@
         body {
             font-family: 'Outfit', sans-serif;
             color: var(--text-dark);
-            line-height: 1.6;
-            background-color: #0f172a;
+            line-height: 1.65;
+            background-color: #0a0e1a;
             overflow-x: hidden;
             position: relative;
         }
+
+        /* Scroll-reveal animation */
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(28px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .reveal { animation: fadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .reveal-d1 { animation-delay: 0.08s; }
+        .reveal-d2 { animation-delay: 0.16s; }
+        .reveal-d3 { animation-delay: 0.24s; }
+        .reveal-d4 { animation-delay: 0.32s; }
+        .reveal-d5 { animation-delay: 0.40s; }
+        .reveal-d6 { animation-delay: 0.48s; }
 
         /* Interactive Data Node Background */
         #data-canvas {
@@ -51,7 +74,28 @@
             width: 100vw;
             height: 100vh;
             z-index: -1;
-            background: radial-gradient(circle at center, #1e1b4b 0%, #0f172a 100%);
+            background: radial-gradient(ellipse at 30% 20%, #1e1b4b 0%, #0a0e1a 60%, #0f172a 100%);
+        }
+
+        /* Ambient glow orbs behind resume */
+        body::before, body::after {
+            content: '';
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.4;
+        }
+        body::before {
+            width: 500px; height: 500px;
+            background: var(--primary);
+            top: -100px; left: -100px;
+        }
+        body::after {
+            width: 400px; height: 400px;
+            background: var(--accent);
+            bottom: 10%; right: -50px;
         }
 
         /* Floating Controls */
@@ -63,25 +107,33 @@
         }
 
         .btn-download {
-            background: linear-gradient(135deg, #c9184a, #ff4d6d);
+            background: linear-gradient(135deg, #c9184a, #ff4d6d, #6d28d9);
+            background-size: 200% 200%;
+            animation: gradientShift 4s ease infinite;
             color: white;
             border: none;
-            padding: 14px 28px;
+            padding: 14px 30px;
             border-radius: 50px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             cursor: pointer;
-            box-shadow: 0 10px 25px rgba(201, 24, 74, 0.4);
+            box-shadow: 0 10px 30px rgba(201, 24, 74, 0.35);
             display: flex;
             align-items: center;
             gap: 10px;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             font-family: 'Outfit', sans-serif;
+            letter-spacing: 0.3px;
+        }
+        @keyframes gradientShift {
+            0%,100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .btn-download:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 15px 35px rgba(201, 24, 74, 0.6);
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 18px 40px rgba(201, 24, 74, 0.55);
+            letter-spacing: 0.6px;
         }
 
         /* Resume Container - Glassmorphism */
@@ -89,14 +141,23 @@
             max-width: 900px;
             margin: 60px auto;
             background: var(--bg-glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(24px) saturate(1.4);
+            -webkit-backdrop-filter: blur(24px) saturate(1.4);
             border: 1px solid var(--border-glass);
-            border-radius: 20px;
-            padding: 60px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            border-radius: var(--radius-lg);
+            padding: 55px 60px;
+            box-shadow: var(--shadow-card), inset 0 1px 0 rgba(255,255,255,0.6);
             position: relative;
             z-index: 10;
+        }
+        /* Decorative gradient bar at top of resume */
+        .resume-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 40px; right: 40px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent-light), var(--primary-light));
+            border-radius: 0 0 4px 4px;
         }
 
         /* Typography & Layout */
@@ -148,31 +209,40 @@
         }
 
         .profile-img {
-            width: 160px;
-            height: 160px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid white;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border: 3px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), 0 0 0 6px rgba(201,24,74,0.12);
+            transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease;
+        }
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 14px 40px rgba(0,0,0,0.15), 0 0 0 8px rgba(201,24,74,0.18);
         }
 
         .header-content h1 {
-            font-size: 3.4rem;
-            line-height: 1.1;
-            margin-bottom: 5px;
-            background: linear-gradient(135deg, #1e293b 0%, var(--primary) 100%);
+            font-size: 3.2rem;
+            line-height: 1.08;
+            margin-bottom: 6px;
+            background: linear-gradient(135deg, #1e293b 0%, var(--primary) 50%, var(--accent) 100%);
+            background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            color: var(--text-dark); /* Fallback */
+            color: var(--text-dark);
         }
 
         .header-content h2 {
-            font-size: 1.4rem;
-            color: var(--primary);
+            font-size: 1.3rem;
+            color: transparent;
+            background: linear-gradient(90deg, var(--primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             font-family: 'Outfit', sans-serif;
             font-weight: 500;
-            margin-bottom: 15px;
-            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
         }
 
         .contact-info {
@@ -215,39 +285,69 @@
         }
 
         .section-title {
-            font-size: 1.6rem;
-            border-bottom: 2px solid var(--primary);
-            padding-bottom: 8px;
-            margin-bottom: 25px;
+            font-size: 1.5rem;
+            border-bottom: none;
+            padding-bottom: 10px;
+            margin-bottom: 28px;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 2.5px;
             display: flex;
             align-items: center;
-            gap: 12px;
-            width: fit-content;
+            gap: 14px;
+            width: 100%;
+            position: relative;
+            color: var(--text-dark);
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent-light) 40%, transparent 100%);
         }
 
         .section-title i {
             color: var(--primary);
-            font-size: 1.4rem;
-            opacity: 0.8;
+            font-size: 1.3rem;
+            width: 38px; height: 38px;
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, rgba(201,24,74,0.1), rgba(109,40,217,0.08));
+            border-radius: 10px;
+            flex-shrink: 0;
         }
 
         .item, .research-item {
-            margin-bottom: 15px;
-            padding: 15px 20px;
-            border-radius: 12px;
-            background: transparent;
-            transition: all 0.3s ease;
-            margin-left: -20px; /* Offset padding */
-            width: calc(100% + 40px);
+            margin-bottom: 14px;
+            padding: 18px 22px;
+            border-radius: var(--radius-md);
+            background: rgba(255,255,255,0.25);
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            margin-left: -22px;
+            width: calc(100% + 44px);
             list-style: none;
+            position: relative;
         }
-        
+        .item::before, .research-item::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 12px; bottom: 12px;
+            width: 3px;
+            background: linear-gradient(180deg, var(--primary), var(--accent-light));
+            border-radius: 3px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
         .item:hover, .research-item:hover {
-            background: rgba(255, 255, 255, 0.45);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            background: var(--bg-glass-hover);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
             transform: translateY(-2px);
+            border-color: rgba(201,24,74,0.1);
+        }
+        .item:hover::before, .research-item:hover::before {
+            opacity: 1;
         }
 
         .item-header {
@@ -295,31 +395,56 @@
         .skills-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 24px;
+        }
+
+        .skills-category {
+            background: rgba(255,255,255,0.3);
+            border-radius: var(--radius-md);
+            padding: 18px 20px;
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+        }
+        .skills-category:hover {
+            background: rgba(255,255,255,0.55);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.04);
         }
 
         .skills-category strong {
             display: block;
-            margin-bottom: 15px;
+            margin-bottom: 14px;
             color: var(--text-dark);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             letter-spacing: 0.5px;
-            border-bottom: 1px dashed rgba(0,0,0,0.15);
+            border-bottom: 1px dashed rgba(201,24,74,0.2);
             padding-bottom: 8px;
         }
 
         .skills-list {
-            padding-left: 18px;
+            padding-left: 0;
             margin-bottom: 0;
             color: #334155;
-            list-style-type: square;
+            list-style-type: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
         }
 
         .skills-list li {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             font-weight: 500;
-            margin-bottom: 6px;
-            line-height: 1.5;
+            margin-bottom: 0;
+            line-height: 1.4;
+            background: linear-gradient(135deg, rgba(201,24,74,0.07), rgba(109,40,217,0.05));
+            padding: 5px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(201,24,74,0.12);
+            transition: all 0.25s ease;
+        }
+        .skills-list li:hover {
+            background: linear-gradient(135deg, rgba(201,24,74,0.15), rgba(109,40,217,0.1));
+            transform: translateY(-1px);
+            box-shadow: 0 3px 8px rgba(201,24,74,0.1);
         }
 
         a.text-link {
@@ -402,6 +527,30 @@
                 background: white !important;
                 overflow: visible !important;
             }
+            .resume-wrapper::before,
+            .item::before, .research-item::before,
+            body::before, body::after {
+                display: none !important;
+            }
+            .skills-category {
+                background: transparent !important;
+                border: none !important;
+                padding: 0 !important;
+            }
+            .skills-list {
+                display: block !important;
+                padding-left: 15px !important;
+                list-style-type: square !important;
+            }
+            .skills-list li {
+                display: list-item !important;
+                background: none !important;
+                border: none !important;
+                padding: 0 !important;
+                border-radius: 0 !important;
+            }
+            /* Remove reveal animations in print */
+            .reveal { animation: none !important; opacity: 1 !important; }
 
             /* Optimize typography for standard ATS parsing */
             body,
@@ -669,7 +818,7 @@
         </header>
 
         <!-- SUMMARY -->
-        <section>
+        <section class="reveal reveal-d1">
             <h3 class="section-title"><i class="fa-solid fa-user-tie"></i> Professional Summary</h3>
             <p>Economist, Researcher, and UGC NET Qualified Assistant Professor. My work intersects economic theory with
                 data-driven insights to analyze markets and equip the next generation with actionable knowledge. Holding
@@ -681,7 +830,7 @@
         </section>
 
         <!-- EXPERIENCE -->
-        <section>
+        <section class="reveal reveal-d2">
             <h3 class="section-title"><i class="fa-solid fa-briefcase"></i> Teaching & Academic Experience</h3>
 
             <article class="item">
@@ -734,7 +883,7 @@
         </section>
 
         <!-- EDUCATION -->
-        <section>
+        <section class="reveal reveal-d3">
             <h3 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</h3>
 
             <article class="item">
@@ -764,7 +913,7 @@
         </section>
 
         <!-- RESEARCH -->
-        <section>
+        <section class="reveal reveal-d4">
             <h3 class="section-title"><i class="fa-solid fa-book-open"></i> Research & Publications</h3>
             <ul style="list-style-type: none; padding-left: 0;">
                 <li class="research-item">
@@ -806,7 +955,7 @@
         </section>
 
         <!-- LEADERSHIP -->
-        <section>
+        <section class="reveal reveal-d5">
             <h3 class="section-title"><i class="fa-solid fa-users"></i> Leadership & Community Work</h3>
             <article class="item">
                 <div class="item-header">
@@ -844,7 +993,7 @@
         </section>
 
         <!-- SKILLS & CERTIFICATIONS -->
-        <section>
+        <section class="reveal reveal-d6">
             <h3 class="section-title"><i class="fa-solid fa-laptop-code"></i> Technical Skills & Certifications</h3>
 
             <div class="skills-grid">
@@ -906,10 +1055,14 @@
         let width, height;
         let particles = [];
 
-        // Adjust these for performance vs visual intensity
-        const particleCount = window.innerWidth > 768 ? 100 : 50;
-        const connectionDistance = 150;
-        const baseSize = 2;
+        const particleCount = window.innerWidth > 768 ? 90 : 45;
+        const connectionDistance = 160;
+
+        const colors = [
+            { r: 201, g: 24, b: 74 },   // primary red
+            { r: 109, g: 40, b: 217 },   // accent purple
+            { r: 167, g: 139, b: 250 },  // light purple
+        ];
 
         function init() {
             width = canvas.width = window.innerWidth;
@@ -924,24 +1077,34 @@
             constructor() {
                 this.x = Math.random() * width;
                 this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 1;
-                this.vy = (Math.random() - 0.5) * 1;
-                this.size = Math.random() * baseSize + 1;
+                this.vx = (Math.random() - 0.5) * 0.7;
+                this.vy = (Math.random() - 0.5) * 0.7;
+                this.baseSize = Math.random() * 2 + 1;
+                this.size = this.baseSize;
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                this.pulse = Math.random() * Math.PI * 2;
             }
 
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
-
-                // Bounce off edges
+                this.pulse += 0.02;
+                this.size = this.baseSize + Math.sin(this.pulse) * 0.5;
                 if (this.x < 0 || this.x > width) this.vx *= -1;
                 if (this.y < 0 || this.y > height) this.vy *= -1;
             }
 
             draw() {
+                const { r, g, b } = this.color;
+                // Glow
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${r}, ${g}, ${b}, 0.06)`;
+                ctx.fill();
+                // Core
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(255, 77, 109, 0.7)'; // Accent color
+                ctx.fillStyle = `rgba(${r}, ${g}, ${b}, 0.75)`;
                 ctx.fill();
             }
         }
@@ -951,13 +1114,8 @@
         function animate() {
             ctx.clearRect(0, 0, width, height);
 
-            // Update and draw particles
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
+            particles.forEach(p => { p.update(); p.draw(); });
 
-            // Draw connections
             for (let i = 0; i < particles.length; i++) {
                 for (let j = i + 1; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
@@ -965,14 +1123,20 @@
                     const distance = Math.sqrt(dx * dx + dy * dy);
 
                     if (distance < connectionDistance) {
+                        const opacity = (1 - distance / connectionDistance) * 0.35;
+                        const ci = particles[i].color;
+                        const cj = particles[j].color;
+                        const grad = ctx.createLinearGradient(
+                            particles[i].x, particles[i].y,
+                            particles[j].x, particles[j].y
+                        );
+                        grad.addColorStop(0, `rgba(${ci.r},${ci.g},${ci.b},${opacity})`);
+                        grad.addColorStop(1, `rgba(${cj.r},${cj.g},${cj.b},${opacity})`);
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
-
-                        // Opacity based on distance
-                        const opacity = 1 - (distance / connectionDistance);
-                        ctx.strokeStyle = `rgba(201, 24, 74, ${opacity * 0.4})`;
-                        ctx.lineWidth = 1;
+                        ctx.strokeStyle = grad;
+                        ctx.lineWidth = 0.8;
                         ctx.stroke();
                     }
                 }
