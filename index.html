@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap"
         rel="stylesheet">
 
     <!-- Font Awesome -->
@@ -45,7 +45,7 @@
         }
 
         body {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'DM Sans', sans-serif;
             color: var(--text-dark);
             line-height: 1.65;
             background-color: #0a0e1a;
@@ -122,7 +122,7 @@
             align-items: center;
             gap: 10px;
             transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            font-family: 'Outfit', sans-serif;
+            font-family: 'DM Sans', sans-serif;
             letter-spacing: 0.3px;
         }
         @keyframes gradientShift {
@@ -165,7 +165,7 @@
         h2,
         h3,
         h4 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Space Grotesk', sans-serif;
             color: var(--text-dark);
             letter-spacing: -0.01em;
         }
@@ -239,7 +239,7 @@
             background: linear-gradient(90deg, var(--primary), var(--accent-light));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-family: 'Outfit', sans-serif;
+            font-family: 'DM Sans', sans-serif;
             font-weight: 500;
             margin-bottom: 16px;
             letter-spacing: 1px;
@@ -318,36 +318,19 @@
         }
 
         .item, .research-item {
-            margin-bottom: 14px;
-            padding: 18px 22px;
-            border-radius: var(--radius-md);
-            background: rgba(255,255,255,0.25);
-            border: 1px solid rgba(0,0,0,0.04);
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            margin-left: -22px;
-            width: calc(100% + 44px);
+            margin-bottom: 24px;
+            padding: 0 0 0 16px;
+            border-left: 2px solid rgba(201,24,74,0.2);
+            background: transparent;
+            border-radius: 0;
+            width: auto;
             list-style: none;
             position: relative;
+            transition: all 0.3s ease;
         }
-        .item::before, .research-item::before {
-            content: '';
-            position: absolute;
-            left: 0; top: 12px; bottom: 12px;
-            width: 3px;
-            background: linear-gradient(180deg, var(--primary), var(--accent-light));
-            border-radius: 3px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
         .item:hover, .research-item:hover {
-            background: var(--bg-glass-hover);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-            transform: translateY(-2px);
-            border-color: rgba(201,24,74,0.1);
-        }
-        .item:hover::before, .research-item:hover::before {
-            opacity: 1;
+            border-left-color: var(--primary);
+            background: linear-gradient(90deg, rgba(201,24,74,0.03), transparent);
         }
 
         .item-header {
@@ -399,25 +382,20 @@
         }
 
         .skills-category {
-            background: rgba(255,255,255,0.3);
-            border-radius: var(--radius-md);
-            padding: 18px 20px;
-            border: 1px solid rgba(0,0,0,0.04);
-            transition: all 0.3s ease;
-        }
-        .skills-category:hover {
-            background: rgba(255,255,255,0.55);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+            background: transparent;
+            padding: 0;
+            margin-bottom: 20px;
+            border: none;
         }
 
         .skills-category strong {
             display: block;
-            margin-bottom: 14px;
-            color: var(--text-dark);
+            margin-bottom: 8px;
+            color: var(--primary);
             font-size: 1.05rem;
             letter-spacing: 0.5px;
-            border-bottom: 1px dashed rgba(201,24,74,0.2);
-            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(201,24,74,0.1);
+            padding-bottom: 4px;
         }
 
         .skills-list {
@@ -427,24 +405,23 @@
             list-style-type: none;
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
+            gap: 6px 14px;
         }
 
         .skills-list li {
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             font-weight: 500;
             margin-bottom: 0;
-            line-height: 1.4;
-            background: linear-gradient(135deg, rgba(201,24,74,0.07), rgba(109,40,217,0.05));
-            padding: 5px 12px;
-            border-radius: 20px;
-            border: 1px solid rgba(201,24,74,0.12);
-            transition: all 0.25s ease;
+            line-height: 1.5;
+            background: transparent;
+            padding: 0;
+            border: none;
         }
-        .skills-list li:hover {
-            background: linear-gradient(135deg, rgba(201,24,74,0.15), rgba(109,40,217,0.1));
-            transform: translateY(-1px);
-            box-shadow: 0 3px 8px rgba(201,24,74,0.1);
+        
+        .skills-list li:not(:last-child)::after {
+            content: '•';
+            color: rgba(201,24,74,0.4);
+            margin-left: 14px;
         }
 
         a.text-link {
@@ -491,16 +468,17 @@
                 -webkit-background-clip: border-box !important;
             }
 
-            /* Firefox: use system fonts that can be embedded in PDF */
+            /* Use standard ATS-friendly fonts for print (Arial / Times New Roman) */
             body, p, li, span, a, div, ul, ol,
             .item-date, .item-subtitle, .contact-info a,
             .skills-list li, .grade-badge {
                 font-family: Arial, Helvetica, sans-serif !important;
+                line-height: 1.5 !important;
             }
 
             h1, h2, h3, h4,
             .section-title, .item-title, .header-content h1, .header-content h2 {
-                font-family: Georgia, 'Times New Roman', serif !important;
+                font-family: 'Times New Roman', Times, serif !important;
             }
 
             /* Strip all web background visuals */
@@ -527,46 +505,37 @@
                 background: white !important;
                 overflow: visible !important;
             }
-            .resume-wrapper::before,
-            .item::before, .research-item::before,
-            body::before, body::after {
+            /* Keep decorative glows hidden for print */
+            body::before, body::after, .resume-wrapper::before, .resume-wrapper::after {
                 display: none !important;
-            }
-            .skills-category {
-                background: transparent !important;
-                border: none !important;
-                padding: 0 !important;
-            }
-            .skills-list {
-                display: block !important;
-                padding-left: 15px !important;
-                list-style-type: square !important;
-            }
-            .skills-list li {
-                display: list-item !important;
-                background: none !important;
-                border: none !important;
-                padding: 0 !important;
-                border-radius: 0 !important;
             }
             /* Remove reveal animations in print */
             .reveal { animation: none !important; opacity: 1 !important; }
 
-            /* Optimize typography for standard ATS parsing */
-            body,
-            p,
-            li,
-            .item-date,
-            .item-subtitle,
-            .contact-info a {
-                color: black !important;
-            }
+            /* Keep text crisp but use standard professional colors */
+
 
             header {
-                border-bottom: 1px solid black;
-                padding-bottom: 15px;
-                margin-bottom: 15px;
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                border-bottom: none !important;
+                padding-bottom: 8px !important;
+                margin-bottom: 8px !important;
             }
+            .header-main {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                gap: 15px !important;
+            }
+            .contact-info {
+                display: flex !important;
+                flex-wrap: wrap !important;
+                gap: 6px 12px !important;
+            }
+
 
             .header-main {
                 gap: 15px;
@@ -577,27 +546,40 @@
             }
 
             .contact-info a {
-                padding: 0 !important;
-                border: none !important;
-                background: transparent !important;
                 box-shadow: none !important;
                 transform: none !important;
+                background: transparent !important;
+                border: none !important;
+                padding: 0 !important;
             }
             
             .contact-info span {
                 padding: 0 !important;
             }
 
-            .header-content h1 {
+            .header-content h1,
+            .header-content h2 {
                 background: none !important;
                 -webkit-text-fill-color: black !important;
                 color: black !important;
             }
 
+
+            .cert-list li::before {
+                display: none !important;
+            }
+            .cert-list li {
+                padding-left: 0 !important;
+                margin-bottom: 8px !important;
+                list-style-type: disc !important;
+                margin-left: 20px !important;
+            }
+
+            /* Hide non-text elements for pure ATS readability */
+            /* User requested QR code back for print */
             .qr-section {
                 font-size: 8pt !important;
             }
-
             .qr-section img,
             .qr-section canvas {
                 width: 60px !important;
@@ -605,24 +587,19 @@
                 margin-bottom: 2px !important;
             }
 
-            .profile-img {
-                width: 100px;
-                height: 100px;
-                border: none;
-            }
-
             .header-content h1 {
-                font-size: 24pt;
+                font-size: 28pt;
                 line-height: 1;
+                margin-bottom: 2px;
             }
 
             .header-content h2 {
-                font-size: 14pt;
-                margin-bottom: 5px;
+                font-size: 14.5pt;
+                margin-bottom: 4px;
             }
 
             .item-title {
-                font-size: 12pt !important;
+                font-size: 13pt !important;
             }
 
             .item-subtitle,
@@ -630,8 +607,9 @@
             p,
             li,
             .contact-info a,
+            .contact-info span,
             body {
-                font-size: 10pt !important;
+                font-size: 11pt !important;
             }
 
             h1,
@@ -644,33 +622,35 @@
             }
 
             section {
-                margin-bottom: 15px !important;
+                margin-bottom: 4px !important;
             }
 
             .section-title {
-                border-bottom: 2px solid black !important;
-                font-size: 1.3rem !important;
-                margin-bottom: 10px !important;
+                border-bottom: 1px solid black !important;
+                font-size: 1.35rem !important;
+                margin-bottom: 8px !important;
                 padding-bottom: 4px !important;
-                display: block !important;
+                color: black !important;
+                text-transform: uppercase !important;
             }
 
             .section-title i {
-                display: none !important; /* Hide icons in print for pure ATS text */
+                /* Hide icons in print for ATS */
+                display: none !important;
             }
 
             .item, .research-item {
-                margin-bottom: 10px !important;
-                padding: 0 !important;
-                margin-left: 0 !important;
-                width: 100% !important;
-                box-shadow: none !important;
-                transform: none !important;
+                margin-bottom: 8px !important;
+                padding-left: 0 !important;
+                border-left: none !important;
                 background: transparent !important;
+            }
+            .item::before, .research-item::before {
+                display: none !important;
             }
 
             p {
-                margin-bottom: 6px !important;
+                margin-bottom: 4px !important;
             }
 
             li {
@@ -685,52 +665,34 @@
             /* Ensure links are fully written out if needed, though href usually parses fine */
             a {
                 text-decoration: none;
-                color: black !important;
+                color: #334155 !important;
             }
 
             .skills-grid {
-                grid-template-columns: 1fr 1fr;
-                /* Using 2 columns saves massive vertical space in print! */
-                gap: 15px;
+                display: block !important;
             }
 
+            /* Skills layout beautifully text-based */
             .skills-category strong {
-                border-bottom: 1px dashed #ccc !important;
-                font-size: 11pt !important;
-                padding-bottom: 4px !important;
-                margin-bottom: 8px !important;
-            }
-
-            .skills-list {
-                padding-left: 15px !important;
-                list-style-type: square !important;
+                font-size: 12.5pt !important;
+                margin-bottom: 4px !important;
+                border: none !important;
             }
             .skills-list li {
-                font-size: 10pt !important;
+                font-size: 11.5pt !important;
                 margin-bottom: 4px !important;
-                line-height: 1.4 !important;
             }
 
-            /* Page break rules */
-            .item, .research-item {
-                page-break-inside: avoid !important;
-                break-inside: avoid !important;
-            }
-
-            .skills-grid {
-                page-break-inside: avoid !important;
-                break-inside: avoid !important;
-            }
-
-            .skills-category {
-                page-break-inside: avoid !important;
-                break-inside: avoid !important;
+            /* Allow natural page breaks to avoid large gaps */
+            .item, .research-item, .skills-grid, .skills-category {
+                page-break-inside: auto !important;
+                break-inside: auto !important;
             }
 
             /* Wrapper injected by JS beforeprint to keep title + first content together */
             .print-keep-together {
-                page-break-inside: avoid !important;
-                break-inside: avoid !important;
+                page-break-inside: auto !important;
+                break-inside: auto !important;
             }
         }
 
@@ -812,7 +774,7 @@
                 </div>
             </div>
             <div class="qr-section">
-                <img id="qr-img" src="" alt="QR Code" />
+                <img id="qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Foghimanshu.github.io%2Fresume%2F&color=1e293b" alt="QR Code" />
                 <span>Scan for<br>Virtual Resume</span>
             </div>
         </header>
@@ -994,7 +956,7 @@
 
         <!-- SKILLS & CERTIFICATIONS -->
         <section class="reveal reveal-d6">
-            <h3 class="section-title"><i class="fa-solid fa-laptop-code"></i> Technical Skills & Certifications</h3>
+            <h3 class="section-title"><i class="fa-solid fa-laptop-code"></i> Technical Skills</h3>
 
             <div class="skills-grid">
                 <div class="skills-category">
@@ -1031,18 +993,20 @@
                         <li>Garhwali (Native)</li>
                     </ul>
                 </div>
-                <div class="skills-category">
-                    <strong>Core Certifications</strong>
-                    <ul class="skills-list">
-                        <li>UGC-NET Economics Qualified (Dec 2024 & Dec 2025)</li>
-                        <li>Python Data Analysis (freeCodeCamp)</li>
-                        <li>Rural Marketing | India Focused - Diploma (Udemy)</li>
-                        <li>Data Visualisation with R (Udemy)</li>
-                        <li>Statistics for Data Analysis (Udemy)</li>
-                        <li>Digital Marketing (Google)</li>
-                    </ul>
-                </div>
+
             </div>
+        </section>
+
+        <section class="reveal reveal-d7">
+            <h3 class="section-title"><i class="fa-solid fa-certificate"></i> Core Certifications</h3>
+            <ul class="cert-list">
+                <li><strong>UGC-NET Economics Qualified</strong> <span>(Dec 2024 & Dec 2025)</span></li>
+                <li><strong>Python Data Analysis</strong> <span>(freeCodeCamp)</span></li>
+                <li><strong>Rural Marketing | India Focused - Diploma</strong> <span>(Udemy)</span></li>
+                <li><strong>Data Visualisation with R</strong> <span>(Udemy)</span></li>
+                <li><strong>Statistics for Data Analysis</strong> <span>(Udemy)</span></li>
+                <li><strong>Digital Marketing</strong> <span>(Google)</span></li>
+            </ul>
         </section>
 
     </main>
@@ -1152,57 +1116,6 @@
         init();
         _animId = requestAnimationFrame(animate);
 
-        // ============ QR Code Generator (client-side, renders to <img> for print compatibility) ============
-        (function() {
-            const url = 'https://oghimanshu.github.io/resume/';
-            const qrImg = document.getElementById('qr-img');
-            if (!qrImg) return;
-
-            // Load QR code library dynamically
-            const script = document.createElement('script');
-            script.src = 'https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js';
-            script.onload = function() {
-                const qr = qrcode(0, 'M');
-                qr.addData(url);
-                qr.make();
-
-                // Render to an off-screen canvas, then convert to data URL for the img
-                const size = 200; // Higher res for crisp print
-                const offCanvas = document.createElement('canvas');
-                offCanvas.width = size;
-                offCanvas.height = size;
-                const offCtx = offCanvas.getContext('2d');
-
-                const moduleCount = qr.getModuleCount();
-                const cellSize = size / moduleCount;
-
-                offCtx.fillStyle = '#ffffff';
-                offCtx.fillRect(0, 0, size, size);
-
-                for (let row = 0; row < moduleCount; row++) {
-                    for (let col = 0; col < moduleCount; col++) {
-                        if (qr.isDark(row, col)) {
-                            offCtx.fillStyle = '#1e293b';
-                            offCtx.fillRect(
-                                Math.floor(col * cellSize),
-                                Math.floor(row * cellSize),
-                                Math.ceil(cellSize),
-                                Math.ceil(cellSize)
-                            );
-                        }
-                    }
-                }
-
-                // Set the img src to the data URL — this prints correctly in Chrome PDF
-                qrImg.src = offCanvas.toDataURL('image/png');
-            };
-            script.onerror = function() {
-                // Fallback: use the goqr.me API as a backup
-                qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(url) + '&color=1e293b';
-            };
-            document.head.appendChild(script);
-        })();
-
         // ============ Print Page-Break Fix + Anti-Rasterization ============
         // Chrome rasterizes text into an unselectable bitmap when it finds
         // compositing triggers (canvas, backdrop-filter, position:fixed, 
@@ -1234,27 +1147,11 @@
                 el.removeAttribute('style');
             });
 
-            // 4. Page-break fix: wrap section-title + next sibling
-            document.querySelectorAll('.section-title').forEach(function(title) {
-                const next = title.nextElementSibling;
-                if (!next) return;
-                const wrapper = document.createElement('div');
-                wrapper.className = 'print-keep-together';
-                title.parentNode.insertBefore(wrapper, title);
-                wrapper.appendChild(title);
-                wrapper.appendChild(next);
-            });
+            // 4. (Page-break JS wrapper removed in favor of native CSS break-after: avoid)
         });
 
         window.addEventListener('afterprint', function() {
-            // 1. Unwrap page-break wrappers
-            document.querySelectorAll('.print-keep-together').forEach(function(wrapper) {
-                const parent = wrapper.parentNode;
-                while (wrapper.firstChild) {
-                    parent.insertBefore(wrapper.firstChild, wrapper);
-                }
-                parent.removeChild(wrapper);
-            });
+            // 1. (Page-break JS wrapper removed)
 
             // 2. Restore inline styles
             _savedInlineStyles.forEach(function(entry) {
