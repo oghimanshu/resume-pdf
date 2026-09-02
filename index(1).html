@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Himanshu Gaur | Resume</title>
+
+    <!-- Professional Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+           SCREEN STYLES – Premium Visual Design
+           ========================================= */
+        :root {
+            --primary: #c9184a;
+            --primary-light: #ff4d6d;
+            --primary-glow: rgba(201, 24, 74, 0.25);
+            --accent: #6d28d9;
+            --accent-light: #a78bfa;
+            --text-dark: #1e293b;
+            --text-medium: #475569;
+            --text-light: #64748b;
+            --bg-glass: rgba(255, 255, 255, 0.88);
+            --bg-glass-hover: rgba(255, 255, 255, 0.95);
+            --border-glass: rgba(255, 255, 255, 0.55);
+            --shadow-card: 0 25px 60px rgba(0, 0, 0, 0.25);
+            --radius-lg: 24px;
+            --radius-md: 14px;
+            --radius-sm: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.65;
+            background-color: #0a0e1a;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Scroll-reveal animation */
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(28px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .reveal { animation: fadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .reveal-d1 { animation-delay: 0.08s; }
+        .reveal-d2 { animation-delay: 0.16s; }
+        .reveal-d3 { animation-delay: 0.24s; }
+        .reveal-d4 { animation-delay: 0.32s; }
+        .reveal-d5 { animation-delay: 0.40s; }
+        .reveal-d6 { animation-delay: 0.48s; }
+
+        /* Interactive Data Node Background */
+        #data-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background: radial-gradient(ellipse at 30% 20%, #1e1b4b 0%, #0a0e1a 60%, #0f172a 100%);
+        }
+
+        /* Ambient glow orbs behind resume */
+        body::before, body::after {
+            content: '';
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.4;
+        }
+        body::before {
+            width: 500px; height: 500px;
+            background: var(--primary);
+            top: -100px; left: -100px;
+        }
+        body::after {
+            width: 400px; height: 400px;
+            background: var(--accent);
+            bottom: 10%; right: -50px;
+        }
+
+        /* Floating Controls */
+        .controls {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 100;
+        }
+
+        .btn-download {
+            background: linear-gradient(135deg, #c9184a, #ff4d6d, #6d28d9);
+            background-size: 200% 200%;
+            animation: gradientShift 4s ease infinite;
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(201, 24, 74, 0.35);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            font-family: 'DM Sans', sans-serif;
+            letter-spacing: 0.3px;
+        }
+        @keyframes gradientShift {
+            0%,100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .btn-download:hover {
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 18px 40px rgba(201, 24, 74, 0.55);
+            letter-spacing: 0.6px;
+        }
+
+        /* Resume Container - Glassmorphism */
+        .resume-wrapper {
+            max-width: 900px;
+            margin: 60px auto;
+            background: var(--bg-glass);
+            backdrop-filter: blur(24px) saturate(1.4);
+            -webkit-backdrop-filter: blur(24px) saturate(1.4);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            padding: 55px 60px;
+            box-shadow: var(--shadow-card), inset 0 1px 0 rgba(255,255,255,0.6);
+            position: relative;
+            z-index: 10;
+        }
+        /* Decorative gradient bar at top of resume */
+        .resume-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 40px; right: 40px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent-light), var(--primary-light));
+            border-radius: 0 0 4px 4px;
+        }
+
+        /* Typography & Layout */
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-dark);
+            letter-spacing: -0.01em;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+        }
+
+        .header-main {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .qr-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .qr-section img,
+        .qr-section canvas {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 6px;
+            border: 1px solid var(--border-glass);
+            border-radius: 4px;
+            padding: 2px;
+            background: white;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), 0 0 0 6px rgba(201,24,74,0.12);
+            transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease;
+        }
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 14px 40px rgba(0,0,0,0.15), 0 0 0 8px rgba(201,24,74,0.18);
+        }
+
+        .header-content h1 {
+            font-size: 3.2rem;
+            line-height: 1.08;
+            margin-bottom: 6px;
+            background: linear-gradient(135deg, #1e293b 0%, var(--primary) 50%, var(--accent) 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: var(--text-dark);
+        }
+
+        .header-content h2 {
+            font-size: 1.3rem;
+            color: transparent;
+            background: linear-gradient(90deg, var(--primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.95rem;
+        }
+
+        .contact-info a {
+            color: var(--text-dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .contact-info a:hover {
+            color: white;
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(201, 24, 74, 0.2);
+        }
+        
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 10px;
+        }
+
+        section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            border-bottom: none;
+            padding-bottom: 10px;
+            margin-bottom: 28px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            width: 100%;
+            position: relative;
+            color: var(--text-dark);
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent-light) 40%, transparent 100%);
+        }
+
+        .section-title i {
+            color: var(--primary);
+            font-size: 1.3rem;
+            width: 38px; height: 38px;
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, rgba(201,24,74,0.1), rgba(109,40,217,0.08));
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        .item, .research-item {
+            margin-bottom: 24px;
+            padding: 0 0 0 16px;
+            border-left: 2px solid rgba(201,24,74,0.2);
+            background: transparent;
+            border-radius: 0;
+            width: auto;
+            list-style: none;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .item:hover, .research-item:hover {
+            border-left-color: var(--primary);
+            background: linear-gradient(90deg, rgba(201,24,74,0.03), transparent);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+        }
+
+        .item-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .item-subtitle {
+            font-weight: 500;
+            color: var(--primary);
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+
+        .item-date {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        ul {
+            padding-left: 20px;
+            color: #334155;
+        }
+
+        li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: #334155;
+            text-align: justify;
+            line-height: 1.7;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .skills-category {
+            background: transparent;
+            padding: 0;
+            margin-bottom: 20px;
+            border: none;
+        }
+
+        .skills-category strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--primary);
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid rgba(201,24,74,0.1);
+            padding-bottom: 4px;
+        }
+
+        .skills-list {
+            padding-left: 0;
+            margin-bottom: 0;
+            color: #334155;
+            list-style-type: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 14px;
+        }
+
+        .skills-list li {
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 0;
+            line-height: 1.5;
+            background: transparent;
+            padding: 0;
+            border: none;
+        }
+        
+        .skills-list li:not(:last-child)::after {
+            content: '•';
+            color: rgba(201,24,74,0.4);
+            margin-left: 14px;
+        }
+
+        a.text-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        a.text-link:hover {
+            text-decoration: underline;
+        }
+
+        /* =========================================
+           PRINT STYLES (100% ATS Friendly PDF)
+           ========================================= */
+        @media print {
+            @page {
+                size: A4;
+                margin: 12mm 15mm;
+            }
+
+            /* =============================================
+               ANTI-RASTERIZATION NUCLEAR RESET
+               - Strips all compositing triggers (Chrome)
+               - Forces system fonts so Firefox can embed
+                 them into the PDF without rasterizing text
+               ============================================= */
+            *,
+            *::before,
+            *::after {
+                -webkit-backdrop-filter: none !important;
+                backdrop-filter: none !important;
+                filter: none !important;
+                mix-blend-mode: normal !important;
+                opacity: 1 !important;
+                will-change: auto !important;
+                transform: none !important;
+                transition: none !important;
+                animation: none !important;
+                box-shadow: none !important;
+                text-shadow: none !important;
+                -webkit-text-fill-color: inherit !important;
+                background-clip: border-box !important;
+                -webkit-background-clip: border-box !important;
+            }
+
+            /* Use standard ATS-friendly fonts for print (Arial / Times New Roman) */
+            body, p, li, span, a, div, ul, ol,
+            .item-date, .item-subtitle, .contact-info a,
+            .skills-list li, .grade-badge {
+                font-family: Arial, Helvetica, sans-serif !important;
+                line-height: 1.5 !important;
+            }
+
+            h1, h2, h3, h4,
+            .section-title, .item-title, .header-content h1, .header-content h2 {
+                font-family: 'Times New Roman', Times, serif !important;
+            }
+
+            /* Strip all web background visuals */
+            body {
+                background: white !important;
+                color: black !important;
+                overflow: visible !important;
+                position: static !important;
+                print-color-adjust: exact !important;
+                -webkit-print-color-adjust: exact !important;
+            }
+
+            #data-canvas,
+            .controls {
+                display: none !important;
+            }
+
+            /* Flatten the container */
+            .resume-wrapper {
+                max-width: 100%;
+                margin: 0;
+                padding: 0;
+                border: none !important;
+                background: white !important;
+                overflow: visible !important;
+            }
+            /* Keep decorative glows hidden for print */
+            body::before, body::after, .resume-wrapper::before, .resume-wrapper::after {
+                display: none !important;
+            }
+            /* Remove reveal animations in print */
+            .reveal { animation: none !important; opacity: 1 !important; }
+
+            /* Keep text crisp but use standard professional colors */
+
+
+            header {
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                border-bottom: none !important;
+                padding-bottom: 8px !important;
+                margin-bottom: 8px !important;
+            }
+            .header-main {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                gap: 15px !important;
+            }
+            .contact-info {
+                display: flex !important;
+                flex-wrap: wrap !important;
+                gap: 6px 12px !important;
+            }
+
+
+            .header-main {
+                gap: 15px;
+            }
+
+            .contact-info {
+                gap: 10px;
+            }
+
+            .contact-info a {
+                box-shadow: none !important;
+                transform: none !important;
+                background: transparent !important;
+                border: none !important;
+                padding: 0 !important;
+            }
+            
+            .contact-info span {
+                padding: 0 !important;
+            }
+
+            .header-content h1,
+            .header-content h2 {
+                background: none !important;
+                -webkit-text-fill-color: black !important;
+                color: black !important;
+            }
+
+
+            .cert-list li::before {
+                display: none !important;
+            }
+            .cert-list li {
+                padding-left: 0 !important;
+                margin-bottom: 8px !important;
+                list-style-type: disc !important;
+                margin-left: 20px !important;
+            }
+
+            /* Hide non-text elements for pure ATS readability */
+            /* User requested QR code back for print */
+            .qr-section {
+                font-size: 8pt !important;
+            }
+            .qr-section img,
+            .qr-section canvas {
+                width: 60px !important;
+                height: 60px !important;
+                margin-bottom: 2px !important;
+            }
+
+            .header-content h1 {
+                font-size: 28pt;
+                line-height: 1;
+                margin-bottom: 2px;
+            }
+
+            .header-content h2 {
+                font-size: 14.5pt;
+                margin-bottom: 4px;
+            }
+
+            .item-title {
+                font-size: 13pt !important;
+            }
+
+            .item-subtitle,
+            .item-date,
+            p,
+            li,
+            .contact-info a,
+            .contact-info span,
+            body {
+                font-size: 11pt !important;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            .section-title,
+            .item-header {
+                page-break-after: avoid;
+            }
+
+            section {
+                margin-bottom: 4px !important;
+            }
+
+            .section-title {
+                border-bottom: 1px solid black !important;
+                font-size: 1.35rem !important;
+                margin-bottom: 8px !important;
+                padding-bottom: 4px !important;
+                color: black !important;
+                text-transform: uppercase !important;
+            }
+
+            .section-title i {
+                /* Hide icons in print for ATS */
+                display: none !important;
+            }
+
+            .item, .research-item {
+                margin-bottom: 8px !important;
+                padding-left: 0 !important;
+                border-left: none !important;
+                background: transparent !important;
+            }
+            .item::before, .research-item::before {
+                display: none !important;
+            }
+
+            p {
+                margin-bottom: 4px !important;
+            }
+
+            li {
+                margin-bottom: 4px !important;
+            }
+
+            .item-header {
+                display: flex;
+                /* Flex is usually fine for single lines in PDF */
+            }
+
+            /* Ensure links are fully written out if needed, though href usually parses fine */
+            a {
+                text-decoration: none;
+                color: #334155 !important;
+            }
+
+            .skills-grid {
+                display: block !important;
+            }
+
+            /* Skills layout beautifully text-based */
+            .skills-category strong {
+                font-size: 12.5pt !important;
+                margin-bottom: 4px !important;
+                border: none !important;
+            }
+            .skills-list li {
+                font-size: 11.5pt !important;
+                margin-bottom: 4px !important;
+            }
+
+            /* Allow natural page breaks to avoid large gaps */
+            .item, .research-item, .skills-grid, .skills-category {
+                page-break-inside: auto !important;
+                break-inside: auto !important;
+            }
+
+            /* Wrapper injected by JS beforeprint to keep title + first content together */
+            .print-keep-together {
+                page-break-inside: auto !important;
+                break-inside: auto !important;
+            }
+        }
+
+        /* Mobile Responsiveness for Screen View */
+        @media screen and (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .header-main {
+                flex-direction: column;
+            }
+
+            .item-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .item-date {
+                margin-bottom: 8px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .resume-wrapper {
+                padding: 30px;
+                margin: 80px 15px 30px 15px;
+            }
+
+            .controls {
+                top: 15px;
+                right: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CRAZY VISUAL: Interactive Data Canvas -->
+    <canvas id="data-canvas"></canvas>
+
+    <!-- UI Controls -->
+    <div class="controls no-print">
+        <button class="btn-download" onclick="window.print()">
+            <i class="fa-solid fa-file-pdf"></i> Save as PDF
+        </button>
+    </div>
+
+    <!-- MAIN ATS-FRIENDLY RESUME DOM -->
+    <main class="resume-wrapper" id="resume">
+
+        <!-- HEADER -->
+        <header>
+            <div class="header-main">
+                <img src="./profile.jpg" alt="Himanshu Gaur"
+                    class="profile-img" onerror="if (!this.dataset.fallback) { this.dataset.fallback='1'; this.src='https://raw.githubusercontent.com/oghimanshu/resume/main/profile.jpg'; } else { this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=800&q=80'; }">
+                <div class="header-content">
+                    <h1>Himanshu Gaur</h1>
+                    <h2>Assistant Professor & Economist</h2>
+                    <div class="contact-info">
+                        <a href="mailto:cliquehimanshu@gmail.com"><i class="fa-solid fa-envelope"></i>
+                            cliquehimanshu@gmail.com</a>
+                        <a href="tel:+917666885207"><i class="fa-solid fa-phone"></i> +91 7666885207</a>
+                        <span><i class="fa-solid fa-location-dot"></i> Mumbai, MH & Dehradun, UK</span>
+                        <a href="https://www.linkedin.com/in/thisishimanshu" target="_blank"><i
+                                class="fa-brands fa-linkedin"></i> linkedin.com/in/thisishimanshu</a>
+                        <a href="https://github.com/oghimanshu" target="_blank"><i class="fa-brands fa-github"></i>
+                            github.com/oghimanshu</a>
+                        <a href="https://www.researchgate.net/profile/Himanshu-Gaur-11" target="_blank"><i
+                                class="fa-brands fa-researchgate"></i> researchgate.net/profile/Himanshu-Gaur-11</a>
+                        <a href="https://oghimanshu.github.io/resume/" target="_blank"><i
+                                class="fa-solid fa-globe"></i> oghimanshu.github.io/resume/</a>
+                    </div>
+                </div>
+            </div>
+            <div class="qr-section">
+                <img id="qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Foghimanshu.github.io%2Fresume%2F&color=1e293b" alt="QR Code" />
+                <span>Scan for<br>Virtual Resume</span>
+            </div>
+        </header>
+
+        <!-- SUMMARY -->
+        <section class="reveal reveal-d1">
+            <h3 class="section-title"><i class="fa-solid fa-user-tie"></i> Professional Summary</h3>
+            <p>Economist, Researcher, and UGC NET Qualified Assistant Professor. My work intersects economic theory with
+                data-driven insights to analyze markets and equip the next generation with actionable knowledge. Holding
+                an M.A. in Business Economics (9.71/10 SGPI) and qualified for the UGC-NET in Economics (Dec 2024 & Dec
+                2025). Highly committed to a pedagogical approach that blends classical economic theory with modern
+                quantitative tools, behavioural insights, and policy applications. Active contributions include
+                publishing in national journals, mentoring undergraduate research, and developing an independent
+                learning platform to teach Python-based data analysis to students.</p>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section class="reveal reveal-d2">
+            <h3 class="section-title"><i class="fa-solid fa-briefcase"></i> Teaching & Academic Experience</h3>
+
+            <article class="item">
+                <div class="item-header">
+                    <h4 class="item-title">Assistant Professor</h4>
+                    <span class="item-date">Aug 2026 – Present</span>
+                </div>
+                <div class="item-subtitle">SIES (Nerul) College of Arts, Science and Commerce</div>
+                <ul>
+                    <li>Deliver lectures in economics and commerce, mentoring student research and fostering critical analytical perspectives.</li>
+                    <li>Guide students in applying economic theory to practical business and market case studies.</li>
+                </ul>
+            </article>
+
+            <article class="item">
+                <div class="item-header">
+                    <h4 class="item-title">Assistant Professor - Economics and Econometrics</h4>
+                    <span class="item-date">Jun 2025 – Jul 2026</span>
+                </div>
+                <div class="item-subtitle">Pillai College of Arts, Commerce & Science (Autonomous)</div>
+                <ul>
+                    <li>Teach courses spanning Microeconomics, Econometrics, and Data Analytics using R and Python.</li>
+                    <li>Guide undergraduate students in empirical research, survey design, and applied econometric
+                        modelling.</li>
+                    <li>Designed structured lesson plans combining theory, case studies, and quantitative practice.</li>
+                    <li>Serve on curriculum committees for Applied Econometrics and Research Methodology.</li>
+                </ul>
+            </article>
+
+            <article class="item">
+                <div class="item-header">
+                    <h4 class="item-title">Creator & Instructor - Educational Initiative</h4>
+                    <span class="item-date">2025 – Present</span>
+                </div>
+                <div class="item-subtitle">Independent Python Data Analysis Learning Platform</div>
+                <ul>
+                    <li>Developed a free, student-friendly website offering Python tutorials tailored for economics
+                        learners (<a href="https://oghimanshu.github.io/Data-Analysis-with-Python/" class="text-link"
+                            target="_blank">View Platform</a>).</li>
+                    <li>Created step-by-step modules on Pandas, NumPy, Matplotlib, and applied data cleaning for
+                        economic datasets.</li>
+                    <li>Mentored batches of students through hands-on coding exercises and real-world micro/macro
+                        datasets.</li>
+                    <li>Integrate this platform into classroom teaching to strengthen computational skills among
+                        economics students.</li>
+                </ul>
+            </article>
+
+            <article class="item">
+                <div class="item-header">
+                    <h4 class="item-title">Finance Content Development Intern</h4>
+                    <span class="item-date">Jan 2024 – Mar 2024</span>
+                </div>
+                <div class="item-subtitle">LetsTute, Mumbai</div>
+                <ul>
+                    <li>Created educational content on personal finance, financial markets, and economic indicators for
+                        digital learners.</li>
+                    <li>Analysed investment behaviour and translated technical concepts into accessible,
+                        student-friendly modules.</li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- EDUCATION -->
+        <section class="reveal reveal-d3">
+            <h3 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</h3>
+
+            <article class="item">
+                <div class="item-header">
+                    <h4 class="item-title">Master of Arts (M.A.) in Business Economics</h4>
+                    <span class="item-date">Jul 2023 – May 2025</span>
+                </div>
+                <div class="item-subtitle">SIES College of Arts, Science & Commerce (Autonomous)</div>
+                <ul>
+                    <li><strong>Overall SGPI:</strong> 9.71/10 (Sem I: 9.64 | Sem II: 10.00 | Sem III: 9.36 | Sem IV:
+                        9.82)</li>
+                    <li><strong>Relevant Coursework:</strong> Microeconomics, Macroeconomics, Econometrics, Indian
+                        Economic Policy, International Economics, Behavioural Economics.</li>
+                </ul>
+            </article>
+
+            <article class="item">
+                <div class="item-header">
+                    <h4 class="item-title">Bachelor of Arts (B.A.) in Economics</h4>
+                    <span class="item-date">Jul 2019 – Apr 2022</span>
+                </div>
+                <div class="item-subtitle">ICLES' Motilal Jhunjhunwala College, Vashi</div>
+                <ul>
+                    <li><strong>Final CGPA:</strong> 9.39</li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- RESEARCH -->
+        <section class="reveal reveal-d4">
+            <h3 class="section-title"><i class="fa-solid fa-book-open"></i> Research & Publications</h3>
+            <ul style="list-style-type: none; padding-left: 0;">
+                <li class="research-item">
+                    <strong>Financial Literacy among Gen-Z of India.</strong><br>
+                    International Journal of Arts, Social Sciences and Humanities. A survey-based study examining
+                    Generation Z respondents across India to understand their financial knowledge and investment
+                    readiness.
+                    <a href="https://doi.org/10.5281/zenodo.19640790" class="text-link" target="_blank">DOI:
+                        10.5281/zenodo.19640790</a>
+                </li>
+                <li class="research-item">
+                    <strong>Bread and Circus in Modern India: Welfare Schemes and Voting Behaviour in Emerging
+                        Democracies.</strong><br>
+                    A quantitative study examining the relationship between welfare scheme participation, media
+                    influence, and electoral voting behavior.
+                    <a href="https://doi.org/10.13140/RG.2.2.22068.62082" class="text-link" target="_blank">DOI:
+                        10.13140/RG.2.2.22068.62082</a>
+                </li>
+                <li class="research-item">
+                    <strong>The Subscription Economy: A Comparative Study of Consumer Preferences.</strong><br>
+                    International Journal of Advanced and Innovative Research (Jul 1, 2025).
+                    <a href="https://doi.org/10.13140/RG.2.2.33319.41129" class="text-link" target="_blank">DOI:
+                        10.13140/RG.2.2.33319.41129</a>
+                </li>
+                <li class="research-item">
+                    <strong>Space Tourism: An Indian Perspective.</strong><br>
+                    Sheth Publishers (Jan 4, 2024). ISBN: 978-93-5902-875-0.
+                    <a href="https://www.researchgate.net/publication/396561507_Space_Tourism_An_Indian_Perspective"
+                        class="text-link" target="_blank">View on ResearchGate</a>
+                </li>
+                <li class="research-item">
+                    <strong>Mental Accounting and Financial Decisions of Women in Navi Mumbai.</strong><br>
+                    A statistical analysis breaking down the mental accounting practices and micro-financial decisions
+                    of women in modern urban settings.
+                    <a href="https://www.researchgate.net/publication/401584967_Mental_Accounting_and_Financial_Decisions_of_Women_in_Navi_Mumbai"
+                        class="text-link" target="_blank">View on ResearchGate</a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- LEADERSHIP -->
+        <section class="reveal reveal-d5">
+            <h3 class="section-title"><i class="fa-solid fa-users"></i> Leadership & Community Work</h3>
+            <article class="item">
+                <div class="item-header">
+                    <h4 class="item-title">General Secretary - Commerce & Economics Association (CEA)</h4>
+                    <span class="item-date">Jul 2024 – Mar 2025</span>
+                </div>
+                <ul>
+                    <li>Led academic outreach initiatives promoting financial literacy and economic awareness.</li>
+                    <li>Organised workshops, intercollegiate events, and policy discussions to encourage active student
+                        engagement.</li>
+                </ul>
+            </article>
+
+            <article class="item">
+                <div class="item-header">
+                    <h4 class="item-title">Peer Guide - Youth for Change Programme</h4>
+                    <span class="item-date">Aug 2019 – Jul 2021</span>
+                </div>
+                <div class="item-subtitle">Akshara Centre, Mumbai</div>
+                <ul>
+                    <li>Facilitated student workshops on communication, leadership, and gender sensitisation.</li>
+                    <li>Conducted civic learning programmes focusing on democratic participation and social
+                        responsibility.</li>
+                </ul>
+            </article>
+
+            <div style="margin-top: 15px;">
+                <strong>Additional Institutional Roles:</strong>
+                <ul style="margin-top: 5px;">
+                    <li><strong>Student Council Member:</strong> SIES College (2024 – 2025)</li>
+                    <li><strong>Head of Digital Media:</strong> NSS (2020 – 2021)</li>
+                    <li><strong>Volunteer:</strong> NSS and ISR Programmes (2019 – 2024)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SKILLS & CERTIFICATIONS -->
+        <section class="reveal reveal-d6">
+            <h3 class="section-title"><i class="fa-solid fa-laptop-code"></i> Technical Skills</h3>
+
+            <div class="skills-grid">
+                <div class="skills-category">
+                    <strong>Technical & Analysis Tools</strong>
+                    <ul class="skills-list">
+                        <li>Excel (Advanced Functions, Macros)</li>
+                        <li>R</li>
+                        <li>Python</li>
+                        <li>Regression Analysis</li>
+                        <li>Time-Series</li>
+                        <li>Forecasting</li>
+                        <li>Hypothesis Testing</li>
+                    </ul>
+                </div>
+                <div class="skills-category">
+                    <strong>Data Visualisation & Teaching</strong>
+                    <ul class="skills-list">
+                        <li>ggplot2</li>
+                        <li>Matplotlib</li>
+                        <li>Excel Dashboards</li>
+                        <li>GitHub Classroom</li>
+                        <li>Jupyter Notebook</li>
+                        <li>LMS Platforms</li>
+                    </ul>
+                </div>
+                <div class="skills-category">
+                    <strong>Research & Languages</strong>
+                    <ul class="skills-list">
+                        <li>Google Scholar</li>
+                        <li>LaTeX</li>
+                        <li>English (Fluent)</li>
+                        <li>Hindi (Fluent)</li>
+                        <li>Marathi (Conversational)</li>
+                        <li>Garhwali (Native)</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="reveal reveal-d7">
+            <h3 class="section-title"><i class="fa-solid fa-certificate"></i> Core Certifications</h3>
+            <ul class="cert-list">
+                <li><strong>UGC-NET Economics Qualified</strong> <span>(Dec 2024 & Dec 2025)</span></li>
+                <li><strong>Python Data Analysis</strong> <span>(freeCodeCamp)</span></li>
+                <li><strong>Rural Marketing | India Focused - Diploma</strong> <span>(Udemy)</span></li>
+                <li><strong>Data Visualisation with R</strong> <span>(Udemy)</span></li>
+                <li><strong>Statistics for Data Analysis</strong> <span>(Udemy)</span></li>
+                <li><strong>Digital Marketing</strong> <span>(Google)</span></li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- JavaScript for the Background Data Network Canvas -->
+    <script>
+        const canvas = document.getElementById('data-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        let particles = [];
+
+        const particleCount = window.innerWidth > 768 ? 90 : 45;
+        const connectionDistance = 160;
+
+        const colors = [
+            { r: 201, g: 24, b: 74 },   // primary red
+            { r: 109, g: 40, b: 217 },   // accent purple
+            { r: 167, g: 139, b: 250 },  // light purple
+        ];
+
+        function init() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.7;
+                this.vy = (Math.random() - 0.5) * 0.7;
+                this.baseSize = Math.random() * 2 + 1;
+                this.size = this.baseSize;
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                this.pulse = Math.random() * Math.PI * 2;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.pulse += 0.02;
+                this.size = this.baseSize + Math.sin(this.pulse) * 0.5;
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+
+            draw() {
+                const { r, g, b } = this.color;
+                // Glow
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${r}, ${g}, ${b}, 0.06)`;
+                ctx.fill();
+                // Core
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${r}, ${g}, ${b}, 0.75)`;
+                ctx.fill();
+            }
+        }
+
+        let _animId = null;
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+
+            particles.forEach(p => { p.update(); p.draw(); });
+
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < connectionDistance) {
+                        const opacity = (1 - distance / connectionDistance) * 0.35;
+                        const ci = particles[i].color;
+                        const cj = particles[j].color;
+                        const grad = ctx.createLinearGradient(
+                            particles[i].x, particles[i].y,
+                            particles[j].x, particles[j].y
+                        );
+                        grad.addColorStop(0, `rgba(${ci.r},${ci.g},${ci.b},${opacity})`);
+                        grad.addColorStop(1, `rgba(${cj.r},${cj.g},${cj.b},${opacity})`);
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = grad;
+                        ctx.lineWidth = 0.8;
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            _animId = requestAnimationFrame(animate);
+        }
+
+        // Handle Resize
+        window.addEventListener('resize', init);
+
+        // Start
+        init();
+        _animId = requestAnimationFrame(animate);
+
+        // ============ Print Page-Break Fix + Anti-Rasterization ============
+        // Chrome rasterizes text into an unselectable bitmap when it finds
+        // compositing triggers (canvas, backdrop-filter, position:fixed, 
+        // running rAF). We must physically strip them from the DOM before
+        // Chrome's print engine snapshots the layer tree.
+        let _removedElements = [];
+        let _savedInlineStyles = [];
+
+        window.addEventListener('beforeprint', function() {
+            // 1. Stop animation loop
+            if (_animId) {
+                cancelAnimationFrame(_animId);
+                _animId = null;
+            }
+
+            // 2. Remove canvas and controls from the DOM entirely
+            _removedElements = [];
+            document.querySelectorAll('#data-canvas, .controls').forEach(function(el) {
+                if (el.parentNode) {
+                    _removedElements.push({ element: el, parent: el.parentNode, next: el.nextSibling });
+                    el.parentNode.removeChild(el);
+                }
+            });
+
+            // 3. Strip any inline styles that may trigger compositing
+            _savedInlineStyles = [];
+            document.querySelectorAll('.item, .research-item, .card, .resume-wrapper, .contact-info a, .btn-download, header, .profile-img').forEach(function(el) {
+                _savedInlineStyles.push({ element: el, style: el.getAttribute('style') });
+                el.removeAttribute('style');
+            });
+
+            // 4. (Page-break JS wrapper removed in favor of native CSS break-after: avoid)
+        });
+
+        window.addEventListener('afterprint', function() {
+            // 1. (Page-break JS wrapper removed)
+
+            // 2. Restore inline styles
+            _savedInlineStyles.forEach(function(entry) {
+                if (entry.style) {
+                    entry.element.setAttribute('style', entry.style);
+                } else {
+                    entry.element.removeAttribute('style');
+                }
+            });
+            _savedInlineStyles = [];
+
+            // 3. Re-insert removed elements
+            _removedElements.forEach(function(entry) {
+                if (entry.next) {
+                    entry.parent.insertBefore(entry.element, entry.next);
+                } else {
+                    entry.parent.appendChild(entry.element);
+                }
+            });
+            _removedElements = [];
+
+            // 4. Restart animation
+            if (document.getElementById('data-canvas')) {
+                init();
+                _animId = requestAnimationFrame(animate);
+            }
+        });
+    </script>
+</body>
+
+</html>
